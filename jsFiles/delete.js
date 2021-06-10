@@ -1,27 +1,26 @@
+//if modules already exists use it otherwise create new modules object.
 var modules = modules || {};
 
 modules.delete = (function () {
     'use strict';
 
-    var deleteBox = $('#deleteModal'),
+    var deleteBox = $('#deleteModal'), //this is the modal that the actuall delte will work in.
         deleteParagraph = $('#deleteBody'),
-        confirmDelete = $('#confirmDelete'),
-        cancelDelete = $('#cancelDelete'),
-        closeDelete = $('#closeDelete');
+        confirmDelete = $('#confirmDelete');
 
-    function cancelEvent() {
-        confirmDelete.off('click');
-    }
 
     function show(itemElement, alertDiv, alertRow) {
-        var id = itemElement.find('.id').text(),
+        var id = itemElement.find('.id').text(), //gets the id of this element.
             name = itemElement.find('.itemName').text(),
             stock = itemElement.find('.itemAmount').text(),
+            //string will be main body of modal.
             string = 'ID: &nbsp;' + id + ', "' + name +
                 '" (' + ' in stock: ' + stock + ' )';
         deleteParagraph.html(string);
-        deleteBox.modal("toggle");
+        deleteBox.modal("toggle");//displays the modal.
+        confirmDelete.off('click'); //ensures that any id that was set to delete button will be removed, necessary if someone cancels his deletion.
         confirmDelete.on('click', function () {
+            //sends item's id to delete, if successfull will remove from list if not will retrieve the error from the back-end and display it.
             $.post("models/deleteModel.php", { delete: id }, function () {
                 itemElement.remove();
             }).fail(function (jqxhr) {
@@ -33,10 +32,8 @@ modules.delete = (function () {
                     alertRow.toggle();
                 }
             });
-            confirmDelete.off('click');
         });
-        cancelDelete.click(cancelEvent);
-        closeDelete.click(cancelEvent);
+
     }
     return {
         show: show

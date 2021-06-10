@@ -5,6 +5,7 @@
     var button = $('#infoButton');
     var header = $('#infoHeader');
 
+    //the info box is closed either by clicking on info or the button.
     sidebar.toggle('slow');
     button.click(function () {
         sidebar.toggle('slow');

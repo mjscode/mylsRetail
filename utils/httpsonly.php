@@ -1,7 +1,7 @@
 <?php
-
-if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== "on") {
-    header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+//ensures https protocal.
+if(isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "on") {
+    header("Location: http://{$_SERVER['HTTPS_HOST']}{$_SERVER['REQUEST_URI']}");
     exit;
 }
 

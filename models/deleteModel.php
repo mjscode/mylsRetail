@@ -8,7 +8,7 @@
         try {
 
             $query = "delete FROM items where id=:id";
-            $statement = $db->prepare($query);
+            $statement = Db::getDb()->prepare($query);
             $statement->bindValue('id',$deleteId);
             $statement->execute();
             $statement->closeCursor();

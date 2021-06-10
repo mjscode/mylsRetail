@@ -7,35 +7,35 @@
             <div class="form-group">
                 <label class="control-label col-sm-5">Your Name: </label>
                 <div class="col-sm-4">
-                    <input type="text"  id="name" name="name"
+                    <input type="text"  class="form-control" id="name" name="name"
                      placeholder="Your Name" >
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-5">Email: </label>
                 <div class="col-sm-4">
-                    <input type="email" id="email" name="email"
+                    <input type="email" class="form-control" id="email" name="email"
                      placeholder="Email Address" >
                 </div>
             </div>      
             <div class="form-group">
                 <label class="control-label col-sm-5">User Name *: </label>
                 <div class="col-sm-4">
-                    <input type="text" id="registerName" name="username"
+                    <input type="text" class="form-control" id="registerName" name="username"
                      placeholder="User Name" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-5">Password *: </label>
                 <div class="col-sm-4">
-                    <input type="password" id="registerPassword"
+                    <input type="password" class="form-control" id="registerPassword"
                      name="password" placeholder="Password" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-5" >Repeat Password *: </label>
                 <div class="col-sm-4">
-                    <input type="password" id="repeatPassword"
+                    <input type="password" class="form-control" id="repeatPassword"
                       name="repeat" placeholder="Repeat Password" required>
                 </div>
             </div>

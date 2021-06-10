@@ -1,5 +1,5 @@
 
-  <div class="modal fade" id="updateModal" role="dialog">
+  <div class="modal" id="updateModal" role="dialog">
     <div class="modal-dialog">
     
       <div class="modal-content">

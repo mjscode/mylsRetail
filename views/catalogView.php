@@ -18,6 +18,9 @@
     .id{
         display:none;
     }
+    label{
+    max-width:10%;
+    }
     #sortForm{
        
     }
@@ -41,6 +44,7 @@
             rights will be able to update or remove an item, as well as add one.
         </div>
         <div class="row">
+        <!-- these buttons will take you to the sections in the page.-->
             <a href="#list"><button class="btn-small btn-success">See our List</button></a>
             <a href="#addPanel"><button class="btn-small btn-success">Add an Item</button></a>
         </div>
@@ -66,6 +70,7 @@
                 </div>
             </div>
         </div>
+        <!-- sidebar with search current settings are defualt.-->
     <div class="row" id="list">
         <div class="col-sm-2">
         <div class="well">
@@ -73,18 +78,19 @@
                         <div class="form-group">
                             <label>Search by Name: </label>
                                 <input
-                                type="text" id="searchName" placeholder="Item or Category"
+                                type="text" class="form-control" id="searchName" placeholder="Item or Category"
                                 name="searchName" value=<?=$search?> >
                         </div>
                         <div class="form-group">
                             <label >Min: </label>    
-                                <input id="minIn" type="number" min='0' step=".01" placeholder="Min" name="minPrice" value=<?=$min?> >
+                                <input id="minIn" class="form-control" type="number" min='0' step=".01" placeholder="Min" name="minPrice" value=<?=$min?> >
                                 </div>
                             <div class="form-group">
                             <label>Max: </label>
-                                <input id="maxIn" min='0' type="number" step=".01" placeholder="Max"
+                                <input id="maxIn" class="form-control" min='0' type="number" step=".01" placeholder="Max"
                                 name="maxPrice" value=<?=$max?> >
                         </div>
+                        <!-- this allows for an array of categories.-->
                         <label >By category(ies): </label>                  
                 <div class="form-group text-center">
                         <?php  foreach($categories as $category):?>
@@ -108,6 +114,7 @@
         </div>
         </div>
         <?php 
+        // the modals that will be used for the for the updates and so on.
         include "modals/deleteModal.php";
         include "modals/updateModal.php";
         include "modals/addModal.php";
@@ -116,6 +123,7 @@
        
         <div class="col-sm-10">
             <form id="sortForm" class="row text-center">
+                    <!-- used to sort will sort the entire list through all pages.-->
                     <label class="control-label col-sm-2">Sort by: </label>
                     <a href=<?= getLink(['sort'=>'categoryId']) ?>>
                          <div class="radio-inline col-sm-2"><input type="radio" <?php if ($sort==='categoryId'){ echo 'checked';
@@ -131,7 +139,8 @@
                         <div class="radio-inline col-sm-2"><input type="radio" <?php if ($sort==='name') echo 'checked';?>> Alphabetical</div>
                     </a>        
            </form>
-            <table  class="table table-striped">
+           <!-- the item list-->
+            <table  class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Product</th>
@@ -139,7 +148,7 @@
                         <th>Amount in Stock</th>
                         <th>Price</th>
                         <th>Category</th>
-                        <th>For Admins:</th>
+                        <th>For Admin :</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -151,7 +160,9 @@
                         <td class="itemPrice"><?= $item->get('price') ?></td>
                         <td><?= $item->get('categoryName') ?></td>
                         <td><?php if($_SESSION['admin']):?>
+                        <!--id will be used for querys, its not visible to client.-->
                         <div class="id"><?= $item->get('id') ?></div>
+                        <!-- view js files to see how these buttons work -->
                             <button class="updateButton">update</button>&nbsp;
                             <button class="deleteButton">delete</button>
                             <?php endif ?>
@@ -160,10 +171,14 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
-
-            <?php include "pager.php"; ?>
+            
+            <?php
+            //the page buttons.
+             include "pager.php"; 
+             ?>
         </div>
     </div>
+    <!-- adds an item only usable for admins. See js file for more detail. -->
     <div class="row">
         <div class="col-sm-9 col-sm-offset-2">
     <div id="addPanel" class="panel panel-default" >

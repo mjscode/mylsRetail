@@ -1,18 +1,12 @@
 <?php
-
+    //checks to make sure data is comming from registration form.
     if (isset($_POST['register'])){
-
+        //ensures proper data.
         if(!empty($_POST['username']) && !empty($_POST['password']) 
         && !empty($_POST['repeat'])){
 
-            $userName=$_POST['username'];
-            $pass= $_POST['password'];
-            $repeat=$_POST['repeat'];
             $inputArray=$_POST;
-            unset($inputArray['repeat']);
-            unset($inputArray['register']);
             
-            include 'utils/queryBuilder.php';
             include 'models/registerModel.php';
 
         }else{

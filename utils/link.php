@@ -1,20 +1,14 @@
 <?php
 
 function getLink($replace = []) {
+    //replace is what you're looking to change.
+    //index.php is the automatic page.
     $link = "index.php?";
 
-    /*$params = $_GET;
-    foreach($replace as $key=>$value) {
-        $params[$key] = $value;
-    }*/
-
+    //combines the current url with the replacement.
     $params = array_merge($_GET, $replace);
 
-    /*foreach($params as $key=>$value) {
-        $link .= urlencode($key) . "=" . urlencode($value);
-        $link .= "&";
-    }*/
-
+    // builds a new link.
     $link .= http_build_query($params);
 
     return $link;

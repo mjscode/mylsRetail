@@ -2,22 +2,18 @@ var modules = modules || {};
 
 modules.update = (function () {
     'use strict';
+    //this update is used for items as opposed to profileUpdate, and upgrade which is to grant users admin status.
     var updateBox = $('#updateModal'),
         header = $('#update-title'),
         item_name = $('.item_name'),
         updateBody = $('#updateBody'),
-        /*updateButton = $('<button type="button" class="btn btn-default">Update</button>'),
-        confirmButton = $('<button type="button" class="btn btn-default">Confirm</button>'),*/
-        upButtons = $('#upButtons'),
+        upButtons = $('#upButtons'), //this button will be used to update and 
         updateBottom = $('#modal-bottom');
 
-    function cancelButtonEvent() {
-        upButtons.off('click');
-    }
     function show(itemElement, alertDiv, alertRow) {
 
         header.html('Use the form below to update information on this item:');
-        upButtons.html('Update');
+        upButtons.html('Update'); //button is now update.
         var id = itemElement.find('.id').text(),
             name = itemElement.find('.itemName').text(),
             unit = itemElement.find('.itemUnit'),
@@ -37,18 +33,18 @@ modules.update = (function () {
             old_stock + ' id="updateStock"></label></form > '
         );
         updateBody.html(form);
-
+        upButtons.off('click');
         upButtons.on('click', function (event) {
-            cancelButtonEvent();
-            upButtons.html("Confirm");
+            upButtons.html("Confirm"); //changes button to confirm will later get a new event.
+            //the list if no value will display default values.
             var new_unit = form.find('#updateUnit').val() ? form.find('#updateUnit').val() : ' ',
                 new_price = form.find('#updatePrice').val() ? form.find('#updatePrice').val() : 0.00,
                 new_stock = form.find('#updateStock').val() ? form.find('#updateStock').val() : 0;
 
             header.html("You have made the following changes:");
-            updateBody.empty();
+            updateBody.empty();//emptys body as now the confirmation body will be added.
             var list = $('<ul></ul>').appendTo(updateBody);
-
+            //a list of all the changes, checks if changes were done and then adds to the list.
             if (new_unit != old_unit) {
                 $('<li> stock: from ' + old_unit + ' to ' + new_unit + '</li>'
                 ).appendTo(list);
@@ -61,7 +57,7 @@ modules.update = (function () {
                 $('<li> amount in stock: from ' + old_stock + ' to ' + new_stock + '</li>'
                 ).appendTo(list);
             }
-
+            //if list empty, then there are no changes 
             if (!(list.children().length)) {
                 updateBody.html('<p>You have not made any changes</p>');
                 upButtons.click(function () {
@@ -69,8 +65,9 @@ modules.update = (function () {
 
                 });
             } else {
+                //if there are changes...
+                upButtons.off('click');
                 upButtons.on('click', function (event) {
-                    //var newUpdate =;
                     $.post("models/updateModel.php",
                         {
                             updateId: id,
@@ -79,6 +76,7 @@ modules.update = (function () {
                             stock: new_stock
                         }
                         , function () {
+                            //changes the list.
                             unit.html(new_unit);
                             price.html(new_price);
                             stock.html(new_stock);
@@ -91,14 +89,11 @@ modules.update = (function () {
                                 alertRow.toggle();
                             }
                         });
-                    cancelButtonEvent();
                     updateBox.modal('toggle');
                 });
             }
 
         });
-        closeUpdate.click(cancelButtonEvent);
-        cancelUpdate.click(cancelButtonEvent);
     }
 
 

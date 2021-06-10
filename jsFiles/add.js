@@ -3,18 +3,15 @@ modules = modules || {};
 modules.add = (function () {
     'use strict';
 
-    var addForm = $('#addForm'),
+    var addForm = $('#addForm'),//the form  
         confirmB = $('#confirmAdd'),
-        addBox = $('#addModal'),
+        addBox = $('#addModal'), //the modal    
         confirmation = $('#confirmModal'),
-        confirmBody = $('#confirmBody'),
-        closeConfirm = confirmation.find('.close'),
-        closeAdd = addBox.find('.close'),
-        cancelConfirm = $('#cancelConfirm'),
-        cancelAdd = $('#cancelAdd');
+        confirmBody = $('#confirmBody');
 
+    //will be used to display a second box that it's been added.
     function showConfirmation(name) {
-        var paragraph = '<p>You have added Item <strong>' + name + '</strong>successfully!</p>';
+        var paragraph = '<p>You have added Item <strong>' + name + ' </strong>successfully!</p>';
         confirmBody.html(paragraph);
         confirmation.modal('toggle');
 
@@ -22,12 +19,8 @@ modules.add = (function () {
     function closeConfirmation() {
         confirmBody.empty();
     }
-    function cancelButtonEvent() {
-        confirmB.off('click');
-    }
 
-    /*closeConfirm.click(closeConfirmation);
-    closeButton.click(closeConfirmation);*/
+
 
     function show(alertDiv, alertRow) {
         addBox.modal('toggle');
@@ -35,11 +28,11 @@ modules.add = (function () {
         var name = $('#addName').val(),
             unit = $('#addUnit').val(),
             price = $('#addPrice').val(),
-            stock = $('#addStock').val() ? $('#addStock').val() : 0,
-            categorySelected = $('#addCategory :selected'),
+            stock = $('#addStock').val() ? $('#addStock').val() : 0, //if no value replace with 0.
+            categorySelected = $('#addCategory :selected'), //gets the selected category.
             selectedName = categorySelected.text(),
             selectedValue = categorySelected.val(),
-
+            //this the list in the modal.
             nameSpan = $('#newName'),
             unitSpan = $('#newUnit'),
             priceSpan = $('#newPrice'),
@@ -47,20 +40,22 @@ modules.add = (function () {
             categorySpan = $('#newCategory');
 
         nameSpan.html(name);
+        // if nothing entered default will be none enetered.
         unitSpan.html(unit ? unit : '<i>(none entered)</i>');
         priceSpan.html(price ? price : '<i>(none entered)</i>');
         stockSpan.html(stock);
         categorySpan.html(selectedName);
+        confirmB.off('click');
 
         confirmB.on('click', function () {
             $.post("models/addItemModel.php", {
-                name: name, unit: unit ? unit : ' ',
+                name: name, unit: unit ? unit : ' ', //if nothing added than value will be a string wih a space.
                 price: price ? price : ' ', stock: stock,
                 category: selectedValue
             },
                 function () {
-                    showConfirmation(name);
-                    addForm.trigger('reset');
+                    showConfirmation(name);// calls confirmation modal.
+                    addForm.trigger('reset');//resets form.
 
                 }).fail(function (jqxhr) {
                     var response = jqxhr.responseText;
@@ -72,11 +67,9 @@ modules.add = (function () {
                     }
 
                 });
-            cancelButtonEvent();
             addBox.modal('toggle');
         });
-        closeAdd.click(cancelButtonEvent);
-        cancelAdd.click(cancelButtonEvent);
+
     }
     return {
         show: show

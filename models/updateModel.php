@@ -12,7 +12,7 @@
         try {
 
             $query = "update items set unit=:unit, price=:price, amount=:stock where id=:id";
-            $statement = $db->prepare($query);
+            $statement = Db::getDb()->prepare($query);
             $statement->bindValue('id',$updateId);
             $statement->bindValue('unit',$unit);
             $statement->bindValue('price',$price);
