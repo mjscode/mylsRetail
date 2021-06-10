@@ -8,7 +8,7 @@ class Db {
         // the password and username are in a different file this was necassary as the code is public on github
         $root = $_SERVER['DOCUMENT_ROOT'];
         $settings=parse_ini_file("./dbSettings.ini");
-        $cs = "mysql:host=localhost;dbname=retaildb";
+        $cs = "mysql:host=localhost;dbname=retailDatab";
         $user = $settings['user'];
         $password = $settings['password'];
         try {
