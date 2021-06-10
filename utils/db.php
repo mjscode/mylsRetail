@@ -12,7 +12,6 @@ class Db {
         $user = $settings['user'];
         $password = $settings['password'];
         try {
-            echo 'trying';
             $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
             $this->db = new PDO($cs, $user, $password, $options);
         } catch (PDOException $e) {
