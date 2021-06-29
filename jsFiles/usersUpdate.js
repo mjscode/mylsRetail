@@ -14,7 +14,7 @@ modules.usersUpdate = (function () {
         usersName.html(username);
         confirm.off('click');
         confirm.on('click', function (event) {
-            $.post('models/userUpgrade.php', { username: username }, function () {
+            $.post('admin/userUpgrade', { username: username }, function () {
                 status.html('Aministrator');
             }).fail(function (jqxhr) {
                 var response = jqxhr.responseText;

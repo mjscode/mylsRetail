@@ -48,7 +48,7 @@ modules.add = (function () {
         confirmB.off('click');
 
         confirmB.on('click', function () {
-            $.post("models/addItemModel.php", {
+            $.post("admin/addItem", {
                 name: name, unit: unit ? unit : ' ', //if nothing added than value will be a string wih a space.
                 price: price ? price : ' ', stock: stock,
                 category: selectedValue

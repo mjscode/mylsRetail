@@ -3,6 +3,7 @@
     // include "utils/httpsonly.php";
     // get link is use to keep the filter between pages.
     include "utils/link.php";
+    include "utils/getUrl.php";
     //session will be used to store information.
     session_start();
 if(empty($_SESSION)){
@@ -12,30 +13,35 @@ if(empty($_SESSION)){
 }
 
 //default page of website is homepage.
-$action = "homepage";
-if(!empty($_GET["action"])) {
-    $action = $_GET["action"];
-}
-//if someone calls for a different page...
-//this website is built along th mvc model.
-switch($action) {
-    case "homepage":
-    include 'controllers/homeController.php';;
-    exit;
-    case "signin": 
+$fullUrl = $_SERVER['REQUEST_URI'];
+$request = getUrl($fullUrl);
+
+switch($request) {
+    case '/homepage':
+    case "/":
+        include 'controllers/homeController.php';
+        exit;
+    case "/signin": 
     include "controllers/signInController.php";
     exit;
-    case "catalog":
+    case "/catalog":
         include "controllers/catalogController.php";
         exit;
-    case "logout":
+    case "/logout":
         include "utils/logOut.php";
         exit;
-    case "profile":
+    case "/profile":
         include "controllers/profileController.php";
         exit;
-        //if not valid action.
+    case "/admin":
+        include "controllers/adminController.php";
+        exit;
+    case "/profileUpdate":
+        include "models/profileUpdate.php";
+        exit;
     default:
-        die("Dont know how to $action");
+        http_response_code(404);
+        die("$request is not valid");
+        exit;
 }
 ?>

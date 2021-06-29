@@ -52,17 +52,17 @@
             <!-- the main navbar -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="<?= getLink(['action'=>'homepage']) ?>">Home</a></li>
-                <li><a href="<?= getLink(['action'=>'catalog']) ?>">Catalog</a></li>
+                <li><a href="<?= getLink('homepage',[]) ?>">Home</a></li>
+                <li><a href="<?= getLink('catalog',[]) ?>">Catalog</a></li>
                 <!-- checks if logged in -->
                 <?php if(!empty($_SESSION["logged"])):?>
-                    <li><a href="<?= getLink(['action'=>'logout']) ?>">Log Out</a></li>
+                    <li><a href="<?= getLink('logout',[]) ?>">Log Out</a></li>
                 <?php else:?>
-                    <li><a href="<?= getLink(['action'=>'signin']) ?>">Log in</a></li>
+                    <li><a href="<?= getLink('signin',[]) ?>">Log in</a></li>
                 <?php endif ?>
                 <!-- only allows access to profile page if registered. -->
                 <?php if(!empty($_SESSION["logged"])):?>
-                <li><a href="<?= getLink(['action'=>'profile']) ?>">Profile</a></li>
+                <li><a href="<?= getLink('profile',[]) ?>">Profile</a></li>
                 <?php endif ?>
                  <li>
                 	<a href="https://github.com/mjscode/PcsClass/tree/master/myPortfolio"><span class="glyphicon glyphicon-cog"></span> View Source Code</a>

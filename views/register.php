@@ -3,7 +3,7 @@
         <div class="formHeader text-center">
         <h3>Not Yet Registered?</h3>
         </div>
-        <form  class="form-horizontal" method="post" action="index.php?action=signin">
+        <form  class="form-horizontal" method="post" action="signin">
             <div class="form-group">
                 <label class="control-label col-sm-5">Your Name: </label>
                 <div class="col-sm-4">

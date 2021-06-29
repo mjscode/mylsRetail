@@ -21,7 +21,7 @@ modules.delete = (function () {
         confirmDelete.off('click'); //ensures that any id that was set to delete button will be removed, necessary if someone cancels his deletion.
         confirmDelete.on('click', function () {
             //sends item's id to delete, if successfull will remove from list if not will retrieve the error from the back-end and display it.
-            $.post("models/deleteModel.php", { delete: id }, function () {
+            $.post("admin/deleteItem", { delete: id }, function () {
                 itemElement.remove();
             }).fail(function (jqxhr) {
                 var response = jqxhr.responseText;

@@ -70,7 +70,7 @@
                 foreach($categories as $category) :
                 ?>
                     <!--link will go to catalog page using this id to get items from the category. -->
-                    <a href="index.php?action=catalog&categoryId=<?= $category->get('id') ?>">
+                    <a href="catalog?categoryId=<?= $category->get('id') ?>">
                         <div class="col-md-3 col-sm-4 category">
                             <figure>
                                 <img src="images/<?= $category->get('picture') ?>" alt="picture of the category"/>

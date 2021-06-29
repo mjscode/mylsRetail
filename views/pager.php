@@ -8,10 +8,9 @@ if(!isset($page)) {//default value.
 
 <div class="row">
     <ul class="pager">   
-
         <li class="previous"><a class="btn"  
         <?php if ($page > 0){ //if there are previous items to display than button is an active link otherwise disable.
-        echo 'href="'.getLink(["page" => $page - 1]).'"'; 
+        echo 'href="'.getLink('catalog',["page" => $page - 1]).'"'; 
         }
         if ($page === 0) 
         echo " disabled";
@@ -19,7 +18,7 @@ if(!isset($page)) {//default value.
         >prev</a></li>
         <li class="next"><a class="btn" <?php
         if($more){//if there are more...
-        echo 'href="'.getLink(["page" => $page + 1]).'"';
+        echo 'href="'.getLink('catalog',["page" => $page + 1]).'"';
         }else{
             echo " disabled";
         }

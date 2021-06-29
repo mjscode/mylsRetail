@@ -49,8 +49,8 @@ modules.profileUpdate = (function () {
             // in the users table username is the id.
             updates.userName = userName;
             //takes update object turns it into a json string and sends it to be updated.
-            $.post("models/profileUpdate.php", JSON.stringify(updates),
-                function () {
+            $.post("profileUpdate", JSON.stringify(updates),
+                 function (success){
                     if ('name' in updates) {
                         updateInfo(nameText, newName);
                     }

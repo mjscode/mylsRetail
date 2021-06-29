@@ -2,7 +2,7 @@
 include 'utils/db.php';
 include 'utils/usersClass.php';
 
-if($_SESSION['admin']){
+if($_SESSION['logged']){
     $userName=$_SESSION['username'];
     $users=[];
 try {

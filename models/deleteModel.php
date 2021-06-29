@@ -1,12 +1,9 @@
 <?php
-    include '../utils/db.php';
-    session_start();
+    include 'utils/db.php';
     $string='';
-    if($_SESSION['admin']){
         if(!empty($_POST['delete'])){
             $deleteId=$_POST['delete'];
         try {
-
             $query = "delete FROM items where id=:id";
             $statement = Db::getDb()->prepare($query);
             $statement->bindValue('id',$deleteId);
@@ -18,9 +15,7 @@
     }else{
         $string="Delete id required.";
     }
-    }else{
-        $string="Denied! Unauthorized access.";
-    }
+    
     if(!empty($string)){
         http_response_code(500);
         exit("Unable to delete item, ".$string);

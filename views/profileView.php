@@ -121,9 +121,8 @@
             </div>
         </div>
     </div>
-
+    <script src='jsFiles/usersUpdate.js'></script>";
 <?php endif ?>
 <script src="jsFiles/profileUpdate.js"></script>
-<script src='jsFiles/usersUpdate.js'></script>
 <script src="jsFiles/profile.js"></script>
 <?php include "bottom.php"; ?>

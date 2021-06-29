@@ -68,7 +68,7 @@ modules.update = (function () {
                 //if there are changes...
                 upButtons.off('click');
                 upButtons.on('click', function (event) {
-                    $.post("models/updateModel.php",
+                    $.post("admin/updateItem",
                         {
                             updateId: id,
                             unit: new_unit,
@@ -80,7 +80,8 @@ modules.update = (function () {
                             unit.html(new_unit);
                             price.html(new_price);
                             stock.html(new_stock);
-                        }).fail(function (jqxhr) {
+                        }
+                        ).fail(function (jqxhr) {
                             var response = jqxhr.responseText;
                             alert = $('<div>' +
                                 '<strong>Error! </strong>' + response + '</div>'

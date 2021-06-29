@@ -26,7 +26,7 @@
                             add_to_session($outputArray);
                             //query successfull, automatically loads homepage.
                             http_response_code(302);
-                            header("Location: index.php?action=homepage");
+                            header("Location: homepage");
                         } else{
                             $error='password is invalid';
                         }

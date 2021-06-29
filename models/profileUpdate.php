@@ -1,8 +1,7 @@
 <?php
-    include '../utils/db.php';
-    session_start();
+    include 'utils/db.php';
     $string='';
-    if($_SESSION['admin']){
+    if($_SESSION['logged']){
         //gets the json object and turn it into a php array.
         $json = file_get_contents("php://input"); 
 

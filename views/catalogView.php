@@ -125,17 +125,17 @@
             <form id="sortForm" class="row text-center">
                     <!-- used to sort will sort the entire list through all pages.-->
                     <label class="control-label col-sm-2">Sort by: </label>
-                    <a href=<?= getLink(['sort'=>'categoryId']) ?>>
+                    <a href=<?= getLink('catalog',['sort'=>'categoryId']) ?>>
                          <div class="radio-inline col-sm-2"><input type="radio" <?php if ($sort==='categoryId'){ echo 'checked';
                          }?>> Category</div> 
                     </a>                    
-                    <a href=<?= getLink(['sort'=>'price_asc']) ?>>
+                    <a href=<?= getLink('catalog',['sort'=>'price_asc']) ?>>
                         <div class="radio-inline col-sm-2"><input type="radio"<?php if ($sort==='price_asc') echo 'checked';?>> Cheapest</div>
                     </a>
-                    <a href=<?= getLink(['sort'=>'price_desc']) ?>>
+                    <a href=<?= getLink('catalog',['sort'=>'price_desc']) ?>>
                         <div class="radio-inline col-sm-2"><input type="radio"<?php if ($sort==='price_desc') echo 'checked';?>> Most Expensive</div>
                     </a>
-                    <a href=<?= getLink(['sort'=>'name']) ?>>
+                    <a href=<?= getLink('catalog',['sort'=>'name']) ?>>
                         <div class="radio-inline col-sm-2"><input type="radio" <?php if ($sort==='name') echo 'checked';?>> Alphabetical</div>
                     </a>        
            </form>

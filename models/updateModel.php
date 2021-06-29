@@ -1,8 +1,6 @@
 <?php
-    include '../utils/db.php';
-    session_start();
+    include 'utils/db.php';
     $string='';
-    if($_SESSION['admin']){
         if(isset($_POST['updateId']) && isset($_POST['unit'])
             && isset($_POST['price']) && isset($_POST['stock'])){
                 $updateId=$_POST['updateId'];
@@ -24,9 +22,6 @@
         }
     }else{
         $string="All information must be entered.";
-    }
-    }else{
-        $string="Denied! Unauthorized access.";
     }
     if(!empty($string)){
         http_response_code(500);

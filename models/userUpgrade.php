@@ -1,6 +1,5 @@
 <?php
-    include '../utils/db.php';
-    session_start();
+    include 'utils/db.php';
     $string='';
     
     if($_SESSION['admin']){

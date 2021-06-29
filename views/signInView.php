@@ -9,7 +9,7 @@ include 'top.php';
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
         <div id="signInForm" class="well">
-            <form  class="form-horizontal" method="post" action="index.php?action=signin">
+            <form  class="form-horizontal" method="post" action="signin">
                 <div class="form-group">
                     <label class="control-label col-sm-2">User Name: </label>
                     <div class="col-sm-3">

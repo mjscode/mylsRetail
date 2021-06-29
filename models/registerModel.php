@@ -26,7 +26,7 @@
                     //if successful..
                     add_to_session($inputArray);
                     http_response_code(302);
-                    header("Location: index.php?action=homepage");
+                    header("Location: homepage");
 
                 } catch (PDOException $e) {
                     //username must be uniqe if already taken registration will fail. By looking at the error we can
